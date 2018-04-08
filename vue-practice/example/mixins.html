@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>mixins Option</title>
+	<script src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>mixins Option</h1>
+	<hr>
+	<div id="app">
+		{{message}}
+		<p><button @click="add">add</button></p>
+	</div>
+
+	<script>
+		var addConsole = {
+			updated:function(){
+				console.log('数据发生变化，变为' + this.message);
+			}
+		} 
+
+		Vue.mixin({
+			updated:function(){
+				console.log('我是全局的混入');
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:1
+			},
+			methods:{
+				add:function(){
+					this.message ++;
+				}
+			},
+			updated:function(){
+				console.log('我是原生的updated');
+			},
+			mixins:[addConsole]
+		})
+	</script>
+</body>
+</html>

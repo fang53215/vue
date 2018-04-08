@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>example methods</title>
+	<script src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>example methods</h1>
+	<hr>
+	<div id="app">
+		<fang>
+			<span slot="ma">{{message.ma}}</span>
+			<span slot="mb">你好</span>
+			<span slot="mc">{{message.mc}}</span>
+		</fang>
+	</div>
+
+	<template id="fff">
+		<div>
+			<p>1 <slot name="ma"></slot></p>
+			<p>2 <slot name="mb"></slot></p>
+			<p>3 <slot name="mc"></slot></p>
+		</div>
+	</template>
+
+	<script>
+		var fangComponent = {
+			template:'#fff'
+		}
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:{
+					ma:'111',
+					mb:'222',
+					mc:'333'
+				}
+			},
+			components:{
+				"fang":fangComponent
+			}
+		})
+	</script>
+</body>
+</html>
