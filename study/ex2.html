@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="example1">
+		<p>message1:"{{message}}"</p>
+		<p>message2:"{{reversedMessage}}"</p>
+		<p>message3:"{{now}}"</p>
+	</div>
+
+	<div id="example2">
+		<p>message1:"{{mes}}"</p>
+		<p>message2:"{{reversedMes()}}"</p>
+	</div>
+	
+<script src="vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#example1',
+		data:{
+			message:'Hello'
+		},
+		computed:{
+			reversedMessage:function(){
+				return this.message.split('').reverse().join('')
+			}
+			/*now: function () {
+			    return Date.now()
+			}*/
+		}
+	})
+
+	var vm2 = new Vue({
+		el:'#example2',
+		data:{
+			mes:'Hello'
+		},
+		methods:{
+			reversedMes:function(){
+				return this.mes.split('').reverse().join('')
+			}
+		}
+	})
+</script>
+</body>
+</html>
